@@ -18,4 +18,112 @@
 		</tr>
 	</table>
 </body>
+while True:
+    print("===== php Eindopracht =====","\n")
+    print("1. Temperatuur omrekenen")
+    print("2. BMI berekenen")
+    print("3. Sparen")
+    print("4. Hypotheek")
+    print("5. Tijd","\n")
+    keuze1 = input("Kies een getal:")
+
+    if keuze1 =="1":
+        print("\n","Hier kun je de temperatuur omzetten naar:")
+        print("Celcius")
+        print("Kelvin")
+        print("Fahrenheit")
+        beginT = input("Van:")
+        eindT = input("naar:")   
+        temp = float(input("Temperatuur:"))
+    
+        if beginT == "Kelvin":
+            temp = temp - 273.15
+        elif beginT == "Fahrenheit":
+            temp = (temp-32)/1.8
+        
+        if eindT == "Kelvin":
+            temp = temp + 273.15
+        elif eindT == "Fahrenheit":
+            temp = (temp * 1.8) + 32
+
+        print (int(temp))
+            
+        keuze2 = input("Terug? (Y/N)")    
+        if keuze2 =="Y":
+            pass
+        elif keuze2 =="N":
+            break
+
+    elif keuze1 =="2":
+        
+        lengte = float(input("Hoogte (meters)"))
+        gewicht = int(input("Gewicht (kilo)"))
+        bmi = gewicht/(lengte*lengte)
+
+        if bmi <= 18.5:
+            print("U heeft een BMI van", int(bmi),"\n","U heeft ondergewicht")
+
+        elif bmi > 18.5 and bmi < 25:
+            print("U heeft een BMI van", int(bmi),"\n","U weegt gemiddeld")
+
+        elif bmi >= 25 and bmi <= 30:
+            print("U heeft een BMI van", int(bmi),"\n","U heeft overgewicht")
+
+        elif bmi > 30:
+            print("U heeft een BMI van", int(bmi),"\n","U heeft obesitas")
+
+        else:
+            print('There is an error with your input')
+            print('Please check you have entered whole numbers\n'
+                  'and decimals were asked.')
+
+        keuze2 = input("Terug? (Y/N)")
+        if keuze2 =="Y":
+            pass
+        elif keuze2 =="N":
+            break
+
+    elif keuze1 =="3":
+        
+        doel = float(input("Doel:"))
+        startB = float(input("Startbedrag:"))
+        storting = float(input("Jaarlijks storing:"))
+        rente = float(input("Rente:"))
+        
+        renteT = (rente / 100) + 1
+        bedrag = startB * renteT
+        jaar = 1
+        print ("1 :",bedrag)
+        while bedrag < doel:
+            bedrag = (bedrag + storting) * renteT           
+            jaar = jaar + 1
+            print (jaar,":",bedrag)
+        print (jaar)
+        
+        keuze2 = input("Terug? (Y/N)")
+        if keuze2 =="Y":
+            pass
+        elif keuze2 =="N":
+            break
+        
+    elif keuze1 =="4":
+        
+        schuld = float(input("Hypotheek Bedrag:"))
+        
+        tijd = int(input("Looptijd in jaren:"))
+        rente = float(input("Rente in procent:"))
+        rente = (rente / 100)
+        aantalmaanden = tijd*12
+        perM = schuld/(aantalmaanden)
+        maandteller = 0
+        while maandteller < aantalmaanden:
+            betaalrente = (rente/12) * schuld
+            schuld = schuld - perM
+            afl = perM + betaalrente
+            maandteller = maandteller+1
+            print ("Maandlast:",maandteller,round(afl,2),"(vast ",round(perM,2),"+ rente ",round(betaalrente,2),")")
+            
+            
+    elif keuze1 =="5":
+        import datetime
 </html>
